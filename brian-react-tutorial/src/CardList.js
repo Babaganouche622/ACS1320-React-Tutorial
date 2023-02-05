@@ -1,6 +1,7 @@
 // CardList.js
 // POPOSSpaceList
 import Card from "./Card";
+import './CardList.css'
 
 function CardList() {
   return (

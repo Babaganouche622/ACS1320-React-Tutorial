@@ -1,11 +1,11 @@
 // src/Card.js
 // POPOSSpace
-import logo from './logo.svg';
+import './Card.css'
 
 function Card(props) {
   const { name, image, address } = props
   return(
-    <div>
+    <div className='Card'>
       <img 
       src={`${process.env.PUBLIC_URL}/images/${image}`} 
       width="300" 
