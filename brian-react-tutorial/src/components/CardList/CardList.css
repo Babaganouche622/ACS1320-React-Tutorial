@@ -1,0 +1,23 @@
+/* .CardList.css */
+/* src/POPOSList.css */
+.CardList {
+  width: calc(100% - 80px);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+}
+
+/* Smaller screens and tablets */
+@media only screen and (max-width: 960px) {
+	.POPOSList {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* Small screens mobile */
+@media only screen and (max-width: 700px) {
+	.POPOSList {
+		grid-template-columns: 1fr;
+	}
+}
