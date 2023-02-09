@@ -1,15 +1,16 @@
 // CardList.js
 // POPOSSpaceList
-import Card from "./Card";
+import Card from "../Card/Card";
 import './CardList.css'
-import data from './sfpopos-data.json'
+import data from '../../sfpopos-data.json'
 
 function CardList() {
-  const cards = data.map(( { title, address, images, hours  } ) => {
+  const cards = data.map(( { title, address, images, hours  }, id) => {
     return (
       <div className="CardList">
         <Card
-        key={title}
+          id={id}
+          key={title}
           name={title}
           address={address}
           image={images[0]}
