@@ -1,13 +1,9 @@
 .Card {
-  width: 100%;
   text-align: center;
 	position: relative;
+	max-width: 400px;
+	min-width: 300px;
 }
-
-/* .Card > img {
-  width: 100%;
-  height: auto;
-} */
 
 .Card .Card-title {
   text-decoration: none;
@@ -40,4 +36,8 @@
 	padding: 0.25em 0.5em;
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 5px;
+}
+
+.Card img {
+	width: 100%;
 }

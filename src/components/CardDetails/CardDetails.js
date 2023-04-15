@@ -1,29 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import './CardDetails.css'
+import DesktopDetails from './DesktopDetails'
+import MobileDetails from './MobileDetails'
 import data from '../../sfpopos-data.json'
 
-function CardDetails(props) {
+function CardDetails() {
   const params = useParams()
   const { id } = params // Location index
-  const { images, title, desc, hours, features, geo } = data[id]
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 784);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsDesktop(window.innerWidth > 784);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <div className='CardDetails'>
-      <div className='CardDetails-image'>
-        <img src={`${process.env.PUBLIC_URL}images/${images[0]}`} alt={title} />
-      </div>
-
-      <div className='CardDetails-info'>
-        <h1 className='CardDetails-title'>{ title }</h1>
-        <p className='CardDetails-desc'>{ desc }</p>
-        <p className='CardDetails-hours'>{ hours }</p>
-        <p className='CardDetails-features'>{ features }</p>
-        <p className='CardDetails-geo'>{ geo.lat } { geo.lon }</p>
-      </div>
-
-    </div>
-  )
+    <>
+      {isDesktop ? <DesktopDetails data={data[id]} /> : <MobileDetails data={data[id]} />}
+    </>
+  );
 }
 
 export default CardDetails;
