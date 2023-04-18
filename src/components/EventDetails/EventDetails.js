@@ -15,22 +15,22 @@ function EventDetails() {
     }
   }
 
-
   return (
     <section
       className="flex flex-col bg-cover bg-center h-auto min-h-screen p-4"
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL}/images/${image})`,
       }}
+      role="main"
+      aria-label="Event Details"
     >
-
       <article className='flex flex-col px-4 md:px-8 py-6 md:py-10 md:text-3xl text-xl bg-white/40 h-4/5 text-center'>
-        <h1 className='md:text-6xl text-4xl font-bold mb-2'>{event.title}</h1>
+        <h1 className='md:text-6xl text-4xl font-bold mb-2' aria-level="1">{event.title}</h1>
         <h2 className='md:text-4xl text-2xl font-bold mb-2'>Hosted By: {event.host}</h2>
         <p className='text-black md:text-2xl mb-4'>{event.desc}</p>
         <div className='justify-end'>
-          <p className='mb-4'>{Date(event.date)}</p>
-          <p className='mb-4'>{event.location}</p>
+          <p className='mb-4' role="heading" aria-level="2">{Date(event.date)}</p>
+          <address className='mb-4'>{event.location}</address>
         </div>
       </article>
     </section>

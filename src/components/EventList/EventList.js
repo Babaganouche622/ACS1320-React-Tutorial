@@ -5,10 +5,12 @@ import data from "../../events.json";
 
 function EventList() {
   const [searchText, setSearchText] = useState('');
-  // const cards;
+
   return (
     <div className="p-4 flex flex-col">
+      <label htmlFor="search-input" className="sr-only">Search events:</label>
       <input
+        id="search-input"
         className='
         flex flex-col
         m-auto
@@ -20,14 +22,15 @@ function EventList() {
         items-center'
         type="text"
         placeholder="Search..."
+        aria-label="Search events"
         onChange={(e) => { setSearchText(e.target.value) }}
       />
 
-      <div className="flex flex-col space-y-4 mt-5">
+      <section className="flex flex-col space-y-4 mt-5">
         {data.filter(obj => obj.title.toLowerCase().includes(searchText.toLowerCase()) || obj.address.toLowerCase().includes(searchText.toLowerCase())).map((event, key) => (
           <Event id={key} key={key} data={event} />
         ))}
-      </div>
+      </section>
     </div>
   )
 }
